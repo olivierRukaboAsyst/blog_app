@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Création de l'article
+{% endblock %}
+{% set aside = 'not' %}
+{% block body %}
+  <div class="UserDashboard flex gap-20">
+    {{
+      include(
+        'account_dashboard/index.html.twig',
+        {
+          page: 'index'
+        }
+      )
+    }}
+    <div class="UserDashboard-container">
+      <h2>
+        Bienvenue dans votre tableau de bord
+      </h2>
+      <p>
+        Vous pouvez gerer votre compte ici
+      </p>
+    </div>
+  </div>
+{% endblock %}
+{# {% block javascripts %}
+
+{% endblock %} #}

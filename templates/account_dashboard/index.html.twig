@@ -1,0 +1,25 @@
+<aside class="dashboard">
+  <ul>
+    <li><a href="{{ path('app_index') }}">Accueil</a></li>
+    <li>
+      <a href="{{ path('app_dashboard') }}"
+        class="{{ page == 'index' ? 'active' : '' }}">
+        Dashboard
+      </a>
+    </li>
+    <li>
+      <a href="{{ path('app_article_new') }}"
+        class="{{ page == 'new' ? 'active' : '' }}">
+        Publier un nouveau article
+      </a>
+    </li>
+    <li>
+      <a href="{{ path('app_article_index') }}"
+        class="{{ page == 'articles' ? 'active' : '' }}">
+        Mes articles
+      </a>
+    </li>
+    <li><a href="{{ path('app_article_index') }}">Mes donnees</a></li>
+    <li><a href="{{ path('app_logout') }}">Deconnexion</a></li>
+  </ul>
+</aside>

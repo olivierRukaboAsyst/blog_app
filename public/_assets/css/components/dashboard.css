@@ -1,0 +1,25 @@
+.UserDashboard-container{
+    flex: 1;
+    overflow-x: auto;
+}
+.UserDashboard aside{
+    width: 295px;
+}
+
+@media  screen and (max-width: 900px) {
+    .UserDashboard {
+        flex-direction: column;
+    }
+    .UserDashboard aside{
+        width: 100%;
+    }
+    
+    /* .UserDashboard .dashboard {
+        width: 90%;
+    }
+    .UserDashboard .dashboard ul li a{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    } */
+}
