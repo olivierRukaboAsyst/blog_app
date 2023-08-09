@@ -11,6 +11,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ArticleType extends AbstractType
 {
@@ -30,15 +32,26 @@ class ArticleType extends AbstractType
             ])
             ->add('content', TextareaType::class, [
                 'label' => false,
+                'required'=>true,
                 'attr' =>[
                     'placeholder'=>"Le contenu de l'article",
                     "class" => "flex-1",
                     'rows' => 10
                 ],
                 "row_attr" => [
-                "class" => "form-group flex"
+                    "class" => "form-group flex"
                 ],
-                "required" => false
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Entrez les contenus de l\'article',
+                    ]),
+                    new Length([
+                        'min' => 50,
+                        'minMessage' => 'Les contenus de l\'article doit depasse {{ limit }} characteres',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 4096,
+                    ]),
+                ]
             ])
             ->add('imageFile', FileType::class, [
                 'label' => false,

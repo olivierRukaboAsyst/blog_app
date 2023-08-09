@@ -4,10 +4,17 @@
   Connectez vous
 {% endblock %}
 {% set aside = 'not' %}
+{% block header %}
+  {{
+    include(
+      'header/header.html.twig',
+      {
+        name: 'Authentification'
+      }
+    )
+  }}
+{% endblock %}
 {% block body %}
-  <h2 class="h3 mb-3 font-weight-normal title">
-    Connectez vous s'il vous plait
-  </h2>
   <form method="post">
     {% if error %}
       <div class="alert alert-danger">

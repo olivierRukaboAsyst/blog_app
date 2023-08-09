@@ -63,3 +63,12 @@ header nav ul li ul li{
     padding: 0 10px;
     white-space: nowrap;
 }
+.header-page{
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--main-color);
+    color: white;
+    text-transform: uppercase;
+}

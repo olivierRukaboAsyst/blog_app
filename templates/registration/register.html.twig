@@ -4,11 +4,17 @@
   Inscription
 {% endblock %}
 {% set aside = 'not' %}
+{% block header %}
+  {{
+    include(
+      'header/header.html.twig',
+      {
+        name: 'Ajouter Utilisateur'
+      }
+    )
+  }}
+{% endblock %}
 {% block body %}
-  <h1 class="title">
-    Inscription
-  </h1>
-
   {{ form_start(registrationForm) }}
   {{ form_row(registrationForm.full_name) }}
   {{ form_row(registrationForm.email) }}

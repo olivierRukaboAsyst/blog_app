@@ -1,10 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} Blog JStore! {% endblock %}
-
+{% block header %}
+  {{
+    include(
+      'header/header.html.twig',
+      {
+        name: {{ category.name }}
+      }
+    )
+  }}
+{% endblock %}
 {% block body %}
     <div class="articles-infos">
-        <p> Articles de la catégorie : <strong>{{ category.name }}</strong> </p>
         <strong>{{ articles | length }}</strong> articles retrouvés
     </div>
     <div class="articles">

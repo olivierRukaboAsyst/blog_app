@@ -1,6 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} {{ article.title }} {% endblock %}
+{% block header %}
+  {{
+    include(
+      'header/header.html.twig',
+      {
+        name: article.title
+      }
+    )
+  }}
+{% endblock %}
 
 {% block body %}
     {# <div class="single-article-container flex gap-10"> #}
