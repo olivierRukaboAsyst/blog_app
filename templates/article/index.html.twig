@@ -4,6 +4,16 @@
   Création de l'article
 {% endblock %}
 {% set aside = 'not' %}
+{% block header %}
+  {{
+    include(
+      'header/header.html.twig',
+      {
+        name: 'Tableau de bord'
+      }
+    )
+  }}
+{% endblock %}
 {% block body %}
   <div class="UserDashboard flex gap-20">
     {{
