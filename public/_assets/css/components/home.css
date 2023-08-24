@@ -1,3 +1,40 @@
+.all-top-news{
+    gap: 5px;
+}
+.headline-news{
+    flex: 3;
+}
+.late-news{
+    flex: 2;
+    height: 100%;
+    flex-direction: column;
+    gap: 5px;
+}
+.late-news .late-news-item{
+    flex: 1;
+    gap: 5px;
+    background-color: var(--main-color);
+}
+.late-news-contents img{
+    width: 220px;
+    height: 100%;
+}
+.late-news-content-txt{
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+.late-news-content-txt a{
+    max-width: 10px;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    padding-bottom: 20px;
+}
+.late-news-content-txt a:hover{
+    color: white;
+}
 .articles{
     display: flex;
     gap: 10px;

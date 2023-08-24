@@ -1,17 +1,95 @@
 header{
-    background: var(--main-color);
+    background: var(--main-color-black);
     color: white;
-    height: 80px;
+    height: 100px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     box-shadow: 0 2px 25px #1d1d1d;
     position: sticky;
     top: 0;
     z-index: 99999;
-    padding: 0 30px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
-header h2{
-    padding-left: 30px;
+header .header-top{
+    width: 95%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    padding-top: 10px;
+}
+header .header-top .left-menu{
+    flex: 1;
+}
+header .header-top .left-menu i{
+    font-size: 1.5rem;
+}
+header .header-top .left-menu i:hover{
+    cursor: pointer;
+    color: var(--main-color);
+}
+
+header .header-top .right-menu {
+    flex: 1;
+    justify-content: end;
+    gap: 20px;
+}
+header .header-top .right-menu .social-media{
+    gap: 10px;
+}
+header .header-top .right-menu .social-media a{
+    display: flex;
+    border: solid 2px white;
+    border-radius: 50px;
+    width: 35px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+}
+header .header-top .right-menu .social-media a:hover{
+    color: var(--main-color);
+    border: solid 2px var(--main-color);
+}
+header .header-top .right-menu .search-bar{
+    align-items: center;
+    font-size: 1.5rem;
+    gap: 5px;
+    border: 1px solid white;
+    border-radius: 5px 5px 0 0;
+}
+header .header-top .right-menu .search-bar:hover{
+    cursor: pointer;
+    color: var(--main-color);
+}
+.header-top .right-menu .search-bar i{
+    padding: 0 5px;
+}
+.header-top .right-menu .search-bar input{
+    border: none;
+    height: 30px;
+    border-radius: 5px 0 0 0;
+    font-size: 1rem;
+    width: 0;
+    background: black;
+    transition: 0.5s;
+}
+.header-top .right-menu .search-bar:hover input{
+    width: 150px;
+    border-bottom: 5px solid var(--main-color);
+    background: white;
+    display: block;
+}
+.header-bottom{
+    height: 30px;
+    width: 100%;
+    background: var(--main-color);
+    align-items: center;
+    justify-content: center;
+}
+header a>img{
+    width: 80px;
 }
 header nav ul{
     list-style-type: none;

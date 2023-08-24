@@ -19,9 +19,32 @@ class BlogController extends AbstractController
     public function hello(ArticleRepository $repoArticle): Response
     {
         $articles = $repoArticle->findAll();
+        $lastArticle = $repoArticle->findOneBy([], ['id' => 'DESC']);
+        
+        $avantLastArticle = $repoArticle->findOneBy([], ['id' => 'DESC'], 1, 1)->getId();
+        $beforeLastRecordId = $repoArticle->findOneBy(['id' => $avantLastArticle - 1]);
+
+        $thirdAvantLastArticle = $repoArticle->findOneBy([], ['id' => 'DESC'], 1, 1)->getId();
+        $beforeBeforeLastRecordId = $repoArticle->findOneBy(['id' => $thirdAvantLastArticle - 2]);
+        // ss
+        $art = $repoArticle->findOneBy([], ['id' => 'DESC'], 1, 1)->getId();
+        $fourth = $repoArticle->findOneBy(['id' => $art - 3]);
+
+        $arts = $repoArticle->findOneBy([], ['id' => 'DESC'], 1, 1)->getId();
+        $fiveth = $repoArticle->findOneBy(['id' => $arts - 5]);
+        
+        $artss = $repoArticle->findOneBy([], ['id' => 'DESC'], 1, 1)->getId();
+        $sixth = $repoArticle->findOneBy(['id' => $artss - 6]);
+
         return $this->render('blog/index.html.twig', [
             'controller_name' => 'BlogController',
             'articles' => $articles,
+            'lastArticle' => $lastArticle,
+            'avantLastArticle' => $beforeLastRecordId,
+            'thirdAvantLastArticle' => $beforeBeforeLastRecordId,
+            'fourth' => $fourth,
+            'fiveth' => $fiveth,
+            'sixth' => $sixth
         ]);
     }
     #[Route('/article/{slug}', name: 'app_single_article')]

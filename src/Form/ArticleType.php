@@ -48,7 +48,6 @@ class ArticleType extends AbstractType
                     new Length([
                         'min' => 50,
                         'minMessage' => 'Les contenus de l\'article doit depasse {{ limit }} characteres',
-                        // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ]

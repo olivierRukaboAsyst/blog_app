@@ -1,6 +1,7 @@
 :root{
     --main-color-white: #f2f3fd;
     --main-color: #f3a616;
+    --main-color-black: black;
     --main-danger: rgb(255, 0, 60);
     --main-success: rgb(0, 68, 45);
     --main-gradient: linear-gradient(var(--main-color), var(--main-color-white), var(--main-color));

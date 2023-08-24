@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+  Erreur | TAM Media
+{% endblock %}
+{% block header %}
+  {{
+    include(
+      'header/header.html.twig',
+      {
+        name: 'Erreur 404'
+      }
+    )
+  }}
+{% endblock %}
+
+{% block body %}
+  <h1>
+    404
+  </h1>
+  <p>Page introuvable</p>
+{# 
+  <p>
+    The requested page couldn't be located. Checkout for any URL misspelling or <a href="{{
+      path(
+        'homepage'
+      )
+      }}">
+      return to the homepage
+    </a>. #}
+  </p>
+{% endblock %}
