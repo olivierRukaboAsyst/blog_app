@@ -23,33 +23,45 @@
   <body>
     <header>
     <div class="header-top flex">
-      <div class="left-menu">
-        <i class="fa-solid fa-bars-staggered fa-rotate-180"></i>
+      <div class="left-menu flex">
+        <div class="town">Uvira</div>
+        {# <div class="town-hour">{{ date_heure | format_datetime() }}</div> #}
       </div>
-      <a href="/">
-        <img src="/_assets/images/images_systeme/tan_logo.png" alt="" />
-      </a>
       <div class="right-menu flex">
         <div class="social-media flex">
           <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+          <a href=""><i class="fa-brands fa-youtube"></i></a>
           <a href=""><i class="fa-brands fa-twitter"></i></i></a>
           <a href=""><i class="fa-brands fa-instagram"></i></i></a>
         </div>
-        <div class="search-bar flex">
+      {# <div class="left-menu">
+        <i class="fa-solid fa-bars-staggered fa-rotate-180"></i>
+      </div> #}
+      {# <a href="/">
+        <img src="/_assets/images/images_systeme/tan_logo.png" alt="" />
+      </a> #}
+
+        {# <div class="search-bar flex">
           <input type="text" name="" id="" placeholder="Chercher un article">
           <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
+        </div> #}
       </div>
     </div>
-
     <div class="header-bottom flex">
-      <p>Media en ligne numero un en Territoire et au Sud Kivu</p>
+      <div class="h-logo">
+      <a href="/">
+        <img src="/_assets/images/images_systeme/tan_logo.png" alt="">
+      </a>
+      </div>
+      <div class="h-pub-one">
+        <img src="/_assets/images/images_systeme/air.png" alt="">
+      </div>
     </div>
-      {# <nav>
-        <ul class="nav-bar flex aic">
-          <li class="nav-item"><a href="">A propos</a></li>
+    <div class="header-menu">
+      <div class="menu-left">
+        <ul class="flex">
           <li class="nav-item down">
-            <a href="">Catégories</a>
+            <a href="/categories">Catégories</a>
             <ul>
               {% for category in app.session.get('categories') %}
                 <li class="nav-item">
@@ -60,6 +72,7 @@
               {% endfor %}
             </ul>
           </li>
+          <li class="nav-item"><a href="">A propos</a></li>
           <li class="nav-item"><a href="/contact">Contact</a></li>
           {% if app.user %}
             <li class="nav-item"><a href="/account">Compte</a></li>
@@ -67,6 +80,17 @@
           {% else %}
             <li class="nav-item"><a href="/login">Connexion</a></li>
           {% endif %}
+        </ul>
+      </div>
+      <div class="menu-right"></div>
+    </div>
+
+    {# <div class="header-bottom flex">
+      <p>Media en ligne numero un en Territoire et au Sud Kivu</p>
+    </div> #}
+      {# <nav>
+        <ul class="nav-bar flex aic">      
+          
         </ul>
       </nav> #}
     </header>
@@ -76,8 +100,8 @@
     {% block header %}
 
     {% endblock %}
-    <div class="container flex gap-10">
-      <div class="flex-1">
+    <div class="containers flex gap-5">
+      <div class="flex flex-1">
         {% block body %}
 
         {% endblock %}

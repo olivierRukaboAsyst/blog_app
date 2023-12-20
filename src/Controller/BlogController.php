@@ -8,15 +8,20 @@ use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Twig\Extra\Intl\IntlExtension;
 
 class BlogController extends AbstractController
 {
+    // private $twig;
     public function __construct(CategoriesServices $categoriesServices){
         $categoriesServices->updateSession();
+        // $this->twig = $twig;
+        // $this->twig->addExtension(new IntlExtension());
     }
 
     #[Route('/', name: 'app_index')]
-    public function hello(ArticleRepository $repoArticle): Response
+    public function hello(ArticleRepository $repoArticle,
+                            CategoryRepository $categoryRepository): Response
     {
         $articles = $repoArticle->findAll();
         $lastArticle = $repoArticle->findOneBy([], ['id' => 'DESC']);
@@ -30,12 +35,11 @@ class BlogController extends AbstractController
         $art = $repoArticle->findOneBy([], ['id' => 'DESC'], 1, 1)->getId();
         $fourth = $repoArticle->findOneBy(['id' => $art - 3]);
 
-        $arts = $repoArticle->findOneBy([], ['id' => 'DESC'], 1, 1)->getId();
-        $fiveth = $repoArticle->findOneBy(['id' => $arts - 5]);
-        
-        $artss = $repoArticle->findOneBy([], ['id' => 'DESC'], 1, 1)->getId();
-        $sixth = $repoArticle->findOneBy(['id' => $artss - 6]);
+        $date_heure = new \DateTime;
 
+        // Categories
+        $categories = $categoryRepository->findAll();
+  
         return $this->render('blog/index.html.twig', [
             'controller_name' => 'BlogController',
             'articles' => $articles,
@@ -43,10 +47,21 @@ class BlogController extends AbstractController
             'avantLastArticle' => $beforeLastRecordId,
             'thirdAvantLastArticle' => $beforeBeforeLastRecordId,
             'fourth' => $fourth,
-            'fiveth' => $fiveth,
-            'sixth' => $sixth
+            'date_heure' => $date_heure,
+            'categories' => $categories
         ]);
     }
+    // #[Route(null, name: 'app_index')]
+    // public function base(): Response
+    // {
+
+    //     $date_heure = new \DateTime;
+
+    //     return $this->render('base.html.twig', [
+    //         'controller_name' => 'BlogController',
+    //         'date_heure' => $date_heure
+    //     ]);
+    // }
     #[Route('/article/{slug}', name: 'app_single_article')]
     public function single(ArticleRepository $repoArticle, string $slug): Response
     {

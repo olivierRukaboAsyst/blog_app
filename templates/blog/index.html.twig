@@ -1,8 +1,102 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} TUMAINI AFRICA NEWS {% endblock %}
+{% block title %}
+  TUMAINI AFRICA NEWS
+{% endblock %}
 
 {% block slider %}
+  <div class="a-la-une">
+    <div class="containers flex">
+      <div class="a-title">
+        A la une
+      </div>
+      <div class="a-description">
+        <a href="">
+          Patricia Urquiola Coats Transparent Glas Tables for Livings
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="big-news">
+    <div class="containers">
+      {# {% for article in articles|slice(-4)|reverse %} #}
+      <div class="all-items flex">
+        <a href="article/{{ lastArticle.slug }}"
+          class="lastItem"
+          style="background-image: url({{ lastArticle.imageUrl }})">
+          <div class="lastItem-description">
+            {% for category in lastArticle.categories %}
+              <p class="category">
+                {{ category.name }}
+              </p>
+            {% endfor %}
+            <h1>
+              {{ lastArticle.title }}
+            </h1>
+            <div class="author-date flex">
+              <p>
+                {{ lastArticle.author.fullName }}
+              </p>
+              <p>
+                {{ lastArticle.fromNow }}
+              </p>
+            </div>
+          </div>
+        </a>
+        <div class="othersItem flex">
+          <a href=""
+            class="avantLastArticle"
+            style="background-image: url({{ avantLastArticle.imageUrl }})">
+            <div class="avant-description">
+              {% for category in avantLastArticle.categories %}
+                <p class="category">
+                  {{ category.name }}
+                </p>
+              {% endfor %}
+              <h1>
+                {{ avantLastArticle.title }}
+              </h1>
+            </div>
+          </a>
+          <div class="others-bottom flex">
+            <a href=""
+              class="bottom-other"
+              style="background-image: url({{
+              thirdAvantLastArticle.imageUrl
+              }})">
+              <div class="other-description">
+                {% for category in thirdAvantLastArticle.categories %}
+                  <p class="category">
+                    {{ category.name }}
+                  </p>
+                {% endfor %}
+                <h5>
+                  {{ thirdAvantLastArticle.title }}
+                </h5>
+              </div>
+            </a>
+            <a href=""
+              class="bottom-other"
+              style="background-image: url({{ fourth.imageUrl }})">
+              <div class="other-description">
+                {% for category in fourth.categories %}
+                  <p class="category">
+                    {{ category.name }}
+                  </p>
+                {% endfor %}
+                <h5>
+                  {{ fourth.title }}
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      {# {% endfor %} #}
+    </div>
+  </div>
+
+  {#
     <div class="slider">
         <div class="all-top-news flex">
             <div class="headline-news">
@@ -77,24 +171,33 @@
         </div>
         </div>
         </div>
-    </div>
-    {# <div class="slider">
-        <div class="slider-content">
-            <h2>Bienvenue sur le blog Jstore</h2>
-            <p>Plusieurs articles publiés chaque jour !</p>
-            <a href="https://mudey.fr/programme/formation-complete-developpeur-web-full-stack" target="_blank">
-                <button class="btn">consulter</button>
-            </a>
-        </div>
-    </div> #}
+    </div>#}
 {% endblock %}
 
 {% block body %}
-    <div class="articles-infos">
+  {# <div class="articles-infos">
         <strong>{{ articles | length }} articles retrouvés</strong>
-    </div>
-    <div class="articles">
-    {% for article in articles %}
+    </div> #}
+  <div class="big-news">
+    {% for category in categories %}
+      {% if category.articles is defined %}
+        <a href="article_by_category/{{ category.slug }}"
+          class="category-index">
+          <div class="category-title">
+            <h5>
+              {{ category.name }}
+            </h5>
+          </div>
+          {% for a in category.articles %}
+            <a href="article/{{ a.slug }}" class="article-in-category">
+              {{ a.title }}
+            </a>
+          {% endfor %}
+        </a>
+      {% endif %}
+    {% endfor %}
+
+    {# {% for article in articles %}
         <a href="article/{{ article.slug }}" class="article-item">
             <div class="article-image">
                 <img src={{ article.imageUrl }} alt="Image de l'article: {{ article.title }}">
@@ -115,6 +218,6 @@
                 </div>
             </div>
         </a>
-    {% endfor %}
-    </div>
+    {% endfor %} #}
+  </div>
 {% endblock %}

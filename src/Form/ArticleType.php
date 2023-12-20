@@ -26,7 +26,7 @@ class ArticleType extends AbstractType
                     "class" => "flex-1"
                 ],
                 "row_attr" => [
-                "class" => "form-group flex"
+                "class" => "form-group flex" 
                 ],
                 "required" => true
             ])
