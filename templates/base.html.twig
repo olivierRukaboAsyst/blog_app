@@ -23,10 +23,21 @@
   <body>
     <header>
     <div class="header-top flex">
-      <div class="left-menu flex">
-        <div class="town">Uvira</div>
-        {# <div class="town-hour">{{ date_heure | format_datetime() }}</div> #}
-      </div>
+        <div class="right-boder"></div>
+        <a href="/">Acceuil</a>
+        <div class="right-boder"></div>
+        <a href="">Qui sommes nous</a>
+        <div class="right-boder"></div>
+        <a href="">Nous contacter</a>
+        <div class="right-boder"></div>
+        {% if app.user %}
+        <a href="/account">Compte</a></li>
+        <div class="right-boder"></div>
+        <a href="/logout">Déconnexion</a></li>
+        {% else %}
+        <a href="/login">Connexion</a></li>
+        {% endif %}
+        <div class="right-boder"></div>
       <div class="right-menu flex">
         <div class="social-media flex">
           <a href=""><i class="fa-brands fa-facebook-f"></i></a>
@@ -48,51 +59,44 @@
       </div>
     </div>
     <div class="header-bottom flex">
-      <div class="h-logo">
-      <a href="/">
-        <img src="/_assets/images/images_systeme/tan_logo.png" alt="">
-      </a>
+      <div class="h-logo flex gap-10">
+        <a href="/">
+          <img src="/_assets/images/images_systeme/tan_logo.png" alt="">
+        </a>
+        <div class="logo-title">
+          <h4>TUMAINI AFRICA</h4>
+          <h4>MEDIA</h4>
+        </div>
       </div>
       <div class="h-pub-one">
         <img src="/_assets/images/images_systeme/air.png" alt="">
       </div>
     </div>
-    <div class="header-menu">
       <div class="menu-left">
-        <ul class="flex">
-          <li class="nav-item down">
-            <a href="/categories">Catégories</a>
-            <ul>
-              {% for category in app.session.get('categories') %}
-                <li class="nav-item">
-                  <a href="/article_by_category/{{ category.slug }}">
-                    {{ category.name }}
-                  </a> ({{ category.articles|length }}) articles
-                </li>
-              {% endfor %}
-            </ul>
-          </li>
-          <li class="nav-item"><a href="">A propos</a></li>
-          <li class="nav-item"><a href="/contact">Contact</a></li>
-          {% if app.user %}
-            <li class="nav-item"><a href="/account">Compte</a></li>
-            <li class="nav-item"><a href="/logout">Déconnexion</a></li>
-          {% else %}
-            <li class="nav-item"><a href="/login">Connexion</a></li>
-          {% endif %}
-        </ul>
+        {% for category in app.session.get('categories') %}
+          <a href="/article_by_category/{{ category.slug }}">
+            {% if category.name == 'Politique' %}
+            <i class="fa-regular fa-newspaper"></i>
+            {% endif %}
+            {% if category.name == 'Sport' %}
+            <i class="fa-solid fa-futbol"></i>
+            {% endif %}
+            {% if category.name == 'Musique' %}
+            <i class="fa-solid fa-music"></i>
+            {% endif %}
+            {% if category.name == 'Divers' %}
+            <i class="fa-solid fa-hands-asl-interpreting"></i>
+            {% endif %}
+            {% if category.name == 'Technologie' %}
+            <i class="fa-solid fa-computer"></i>
+            {% endif %}
+            {% if category.name == 'Religion' %}
+            <i class="fa-solid fa-cross"></i>
+            {% endif %}
+              {{ category.name }}
+        {% endfor %}
+        <a href="">Publicité</a>
       </div>
-      <div class="menu-right"></div>
-    </div>
-
-    {# <div class="header-bottom flex">
-      <p>Media en ligne numero un en Territoire et au Sud Kivu</p>
-    </div> #}
-      {# <nav>
-        <ul class="nav-bar flex aic">      
-          
-        </ul>
-      </nav> #}
     </header>
     {% block slider %}
 
@@ -101,11 +105,11 @@
 
     {% endblock %}
     <div class="containers flex gap-5">
-      <div class="flex flex-1">
+      {# <div class="flex flex-1"> #}
         {% block body %}
 
         {% endblock %}
-      </div>
+      {# </div> #}
       {% if aside is not defined %}
         {% include 'aside/index.html.twig' %}
       {% endif %}

@@ -12,7 +12,7 @@
       </div>
       <div class="a-description">
         <a href="">
-          Patricia Urquiola Coats Transparent Glas Tables for Livings
+          Félix Tshisekedi : « Je suis réélu président de tous les Congolais »
         </a>
       </div>
     </div>
@@ -20,7 +20,7 @@
   <div class="big-news">
     <div class="containers">
       {# {% for article in articles|slice(-4)|reverse %} #}
-      <div class="all-items flex">
+      <div class="all-items gap-5 flex">
         <a href="article/{{ lastArticle.slug }}"
           class="lastItem"
           style="background-image: url({{ lastArticle.imageUrl }})">
@@ -44,7 +44,7 @@
           </div>
         </a>
         <div class="othersItem flex">
-          <a href=""
+          <a href="article/{{ avantLastArticle.slug }}"
             class="avantLastArticle"
             style="background-image: url({{ avantLastArticle.imageUrl }})">
             <div class="avant-description">
@@ -59,7 +59,7 @@
             </div>
           </a>
           <div class="others-bottom flex">
-            <a href=""
+            <a href="article/{{ thirdAvantLastArticle.slug }}"
               class="bottom-other"
               style="background-image: url({{
               thirdAvantLastArticle.imageUrl
@@ -75,7 +75,7 @@
                 </h5>
               </div>
             </a>
-            <a href=""
+            <a href="article/{{ fourth.slug }}"
               class="bottom-other"
               style="background-image: url({{ fourth.imageUrl }})">
               <div class="other-description">

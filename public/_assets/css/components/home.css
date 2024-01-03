@@ -28,13 +28,10 @@
     overflow-x: auto;
     height: 70vh;
 }
-.all-items{
+.all-items .category-index h5{
     gap: 5px;
 }
-/* .all-items:hover .lastItem,
-.all-items:focus .lastItem {
-  transform: scale(1.2);
-} */
+
 .lastItem{
     position: relative;
     flex: 3;
@@ -43,12 +40,14 @@
     background-size: cover;
 }
 
-.lastItem .lastItem-description{
+.lastItem .lastItem-description, .othersItem .avant-description,
+.others-bottom .other-description{
     position: absolute;
     bottom: 0;
     width: 100%;
     color: aliceblue;
     padding: 15px;
+    background-color: rgba(34, 34, 34, 0.6);
 }
 
 .bottom-other .other-description .category,

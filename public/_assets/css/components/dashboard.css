@@ -1,6 +1,12 @@
+/* .UserDashboard{
+    justify-content: space-between;
+} */
 .UserDashboard-container{
     flex: 1;
-    overflow-x: auto;
+}
+.UserDashboard-container form{
+    margin: 10px;
+    max-width: 100% !important;
 }
 .UserDashboard aside{
     width: 295px;
